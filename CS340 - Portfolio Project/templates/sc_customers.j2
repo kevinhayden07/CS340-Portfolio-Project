@@ -1,0 +1,70 @@
+{% extends 'base.j2' %}
+<!DOCTYPE html>
+<html>
+
+{% block head %}
+
+    <head>
+        <title></title>
+    </head>
+
+{% endblock %}
+
+{% block body %}
+
+    <body>
+        <h1></h1>
+        <h2></h2>
+        <h3>Customer Management</h3>
+        <p></p>
+        <table>
+        <thead>
+        <tr>
+            <!-- Iterate through each key in the first entry to get the
+            column name -->
+            {% for key in Customers[0].keys() %}
+
+            <!-- Create a <th> tag with the key inside of it, this will be
+            our header row -->
+            <th>{{ key }}</th>
+
+            <!-- End of this for loop -->
+            {% endfor %}
+        </tr>
+        <tbody>
+
+        <!-- Now, iterate through every person in Customers -->
+        {% for person in Customers %}
+        <tr>
+            <!-- Then iterate through every key in the current person dictionary -->
+            {% for key in person.keys() %}
+
+            <!-- Create a <td> element with the value of that key in it -->
+            <td>{{person[key]}}</td>
+            {% endfor %}
+
+            <!-- Create our edit/delete buttons -->
+            <td><a href="customer_delete/{{person.id}}" <i class="fa-solid fa-trash"></i></a></td>
+        </tr>
+        {% endfor %}
+        </table>
+        
+        <br>
+
+        <p><a href="{{ url_for('customer_add') }}" <i class="btn btn-primary"> Add New</i></a></p>
+
+    </body>
+
+{% endblock %}
+
+{% block footer %}
+
+    <footer>
+    
+
+
+    </footer>
+
+{% endblock %}
+
+</html>

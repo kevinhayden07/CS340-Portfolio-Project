@@ -1,0 +1,70 @@
+<html>
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+{% endblock %}
+
+{% block body %}
+
+<div style="text-align: center;">
+<div style="display: inline-block; text-align: left;">
+
+
+<h3>Pieces Artists Management</h3>
+<h4>Add a value to Pieces_Artists</h4>
+
+<form id="insertPieces_Artists" action="/piece_artist_add" method="post">
+
+    <div class="form-group row">
+        <label for="inputArtist5" class="col-sm-2 col-form-label">Artist</label>
+        
+        <div class="col-sm-10">
+               <select class="form-control" id="artist_id" name="artist_id" placeholder="" required> 
+            
+            <!-- Access our sales tuple passed from app.py-->
+            <option value="0">&nbsp;</option>
+            {% for artist in artists %}
+                    <option value="{{ artist['id'] }}"> {{artist['last_name']}}</option> 
+            
+            <!-- End of this for loop -->
+            {% endfor %} 
+
+        </select>
+        </div>
+    </div>
+    
+    </br>
+
+    <div class="form-group row">
+        <label for="inputPiece5" class="col-sm-2 col-form-label">Piece</label>
+        <div class="col-sm-10">
+               <select class="form-control" id="piece_id" name="piece_id" placeholder="" required> 
+            <!-- Access our sales tuple passed from app.py-->
+            <option value="0">&nbsp;</option>
+            {% for piece in pieces %}
+                    <option value="{{ piece['id'] }}"> {{piece['title']}}</option> 
+            <!-- End of this for loop -->
+            {% endfor %} 
+        </select>
+        </div>
+    </div>
+       
+    </br>
+
+    <div class="form-group row">
+        <div class="col-sm-10">
+        <button type="submit"  name="add_piece_artist" value="add_piece_artist" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
+
+</html>
+
+</div>
+</div>
